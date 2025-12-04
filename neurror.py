@@ -395,7 +395,7 @@ def neurror():
     
 
     # This is the part where we run the training engine
-    clf = OneVsRestClassifier((LogisticRegression(max_iter=1000, solver="liblinear")) # Here we have our training "classifier", object
+    clf = OneVsRestClassifier((LogisticRegression(max_iter=1000, solver="liblinear")))# Here we have our training "classifier", object
                                                                 # 
                                                                # that is meant to use Logistic Regression method, specifically.
                                                                # As a way of training upon our data, and learning
