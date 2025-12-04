@@ -2,13 +2,15 @@
 import time
 import json
 import os
-from sentence_transformers import SentenceTransformer # type: ignore
+from sentence_transformers import SentenceTransformer 
 from sklearn.linear_model import LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier #To support liblinear, from crashing after developer's update
+
 
 #These imports exist to let me actually use the tools that they offer
 #Before i can use their objects or functions, i have to specify that they must be brought into here
 
-
+#Before running the code, run this in the terminal: pip install -r dependencies.txt
 model = SentenceTransformer("all-MiniLM-L6-v2") 
 # I will use variable model, to store which type of pre-trained model I will apply in my code
 # Make sure to install Python´s SentenceTransformer, import it, and store it before you apply it in your code
@@ -393,7 +395,7 @@ def neurror():
     
 
     # This is the part where we run the training engine
-    clf = LogisticRegression(max_iter=1000, solver="liblinear") # Here we have our training "classifier", object
+    clf = OneVsRestClassifier((LogisticRegression(max_iter=1000, solver="liblinear")) # Here we have our training "classifier", object
                                                                 # 
                                                                # that is meant to use Logistic Regression method, specifically.
                                                                # As a way of training upon our data, and learning
